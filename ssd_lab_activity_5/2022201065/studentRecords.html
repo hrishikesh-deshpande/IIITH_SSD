@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+    function add() {
+        var name, roll;
+
+        roll = document.getElementById("roll").value;
+        name = document.getElementById("name").value;
+        if (roll.length == 0 || name.length == 0) return;
+        var row = tab.insertRow();
+        row.className += "row";
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        // var cell3 = row.insertCell(2);
+
+
+        cell1.innerHTML = roll;
+        cell2.innerHTML = name;
+        // cell3.innerHTML = '<button type="submit" onClick="deleteRow(this)" >Delete</button>';
+        document.getElementById("roll").value = "";
+        document.getElementById("name").value = "";
+    }
+
+    function deleteRow(element) {
+        var row = document.querySelectorAll(".row");
+        if (row.length > 0) { row[row.length - 1].remove(); }
+    }
+
+</script>
+
+<body>
+    <!-- <input type="button" value="Generate a table" onclick="generateTable()"> -->
+
+    <div id="tablecontainer">
+        <h1>Students Records</h1>
+        <input type="text" id="roll" placeholder="Roll Number" />&emsp;
+        <input type="text" id="name" placeholder="Student Name" />&emsp;
+        <button type="submit" onclick="add()">Add</button><br><br>
+
+        <table id="tab">
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+            </tr>
+        </table>
+        <br><br>
+        <button type="submit" onclick="deleteRow()" id="del">Delete Last Entry</button>
+    </div>
+
+
+</body>
+
+</html>
